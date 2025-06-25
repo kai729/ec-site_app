@@ -48,6 +48,10 @@ function cartReducer(state: CartState, action: CartAction): CartState {
         ...state,
         items: [],
       };
+
+    // ✅ 絶対必要！
+    default:
+      return state;
   }
 }
 
