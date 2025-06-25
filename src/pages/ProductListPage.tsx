@@ -60,7 +60,7 @@ const ProductListPage = ({ searchQuery, selectedCategory }: Props) => {
     return (
       <Grid container spacing={2} justifyContent="center">
         {Array.from({ length: 8 }).map((_, i) => (
-          <Grid item key={i} component="div" sx={{ minWidth: 250, maxWidth: 300 }}>
+          <Grid item key={i} sx={{ minWidth: 250, maxWidth: 300 }}>
             <Card>
               <Skeleton variant="rectangular" height={200} />
               <CardContent>
