@@ -42,7 +42,7 @@ const ProductListPage = ({ searchQuery, selectedCategory }: Props) => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const handleAddToCart = (product: Product) => {
-    dispatch({ type: "ADD_ITEM", payload: product });
+    dispatch({ type: "ADD_ITEM", payload: { ...product, quantity: 1 } });
     setOpenSnackbar(true);
   };
 
@@ -58,7 +58,7 @@ const ProductListPage = ({ searchQuery, selectedCategory }: Props) => {
     return matchesCategory && matchesSearch;
   });
 
-  const MotionGridItem = motion(Grid);
+  const MotionGridItem = motion.create(Grid);
 
   if (isLoading) {
     return (
@@ -92,6 +92,7 @@ const ProductListPage = ({ searchQuery, selectedCategory }: Props) => {
             xs={12}
             sm={4}
             key={product.id}
+            component="div"
             sx={{ flexGrow: 1, minWidth: 250, maxWidth: 300 }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
