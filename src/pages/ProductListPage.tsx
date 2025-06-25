@@ -82,18 +82,11 @@ const ProductListPage = ({ searchQuery, selectedCategory }: Props) => {
     <>
       <Grid container spacing={2} justifyContent="space-evenly">
         {filteredProducts?.map((product, index) => (
-          <motion.div
-            key={product.id}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: index * 0.1 }}
-          >
-            <Grid
-              item
-              xs={12}
-              sm={4}
-              component="div" // 🔥 これが絶対必須
-              sx={{ flexGrow: 1, minWidth: 250, maxWidth: 300 }}
+          <Grid item xs={12} sm={4} key={product.id} sx={{ flexGrow: 1, minWidth: 250, maxWidth: 300 }}>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
             >
               <Card
                 component={motion.div}
@@ -138,8 +131,8 @@ const ProductListPage = ({ searchQuery, selectedCategory }: Props) => {
                   </Button>
                 </CardActions>
               </Card>
-            </Grid>
-          </motion.div>
+            </motion.div>
+          </Grid>
         ))}
       </Grid>
 
