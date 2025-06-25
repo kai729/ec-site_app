@@ -16,7 +16,7 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
     }
     case "REMOVE_ITEM":
       return {
-        items: state.items.filter((item) => item.id !== action.payload), // idだけでOK
+        items: state.items.filter((item) => item.id !== action.payload),
       };
     case "INCREMENT_QUANTITY":
       return {
@@ -38,6 +38,8 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
       };
     case "CLEAR_CART":
       return { items: [] };
+
+    // ✅ ここが必須！
     default:
       return state;
   }
