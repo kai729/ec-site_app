@@ -50,7 +50,7 @@ const ProductDetailPage = () => {
   }
 
   const handleAddToCart = () => {
-    dispatch({ type: "ADD_ITEM", payload: product });
+    dispatch({ type: "ADD_ITEM", payload: { ...product, quantity: 1 } });
   };
 
   // 仮の複数画像データ（複製）
