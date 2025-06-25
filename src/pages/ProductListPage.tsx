@@ -50,7 +50,6 @@ const ProductListPage = ({ searchQuery, selectedCategory }: Props) => {
     setOpenSnackbar(false);
   };
 
-  // 🔍 フィルター処理
   const filteredProducts = products?.filter((product) => {
     const matchesCategory = selectedCategory ? product.category === selectedCategory : true;
     const matchesSearch = product.title.toLowerCase().includes(searchQuery.toLowerCase());
@@ -61,7 +60,7 @@ const ProductListPage = ({ searchQuery, selectedCategory }: Props) => {
     return (
       <Grid container spacing={2} justifyContent="center">
         {Array.from({ length: 8 }).map((_, i) => (
-          <Grid item key={i} sx={{ minWidth: 250, maxWidth: 300 }}>
+          <Grid item key={i} component="div" sx={{ minWidth: 250, maxWidth: 300 }}>
             <Card>
               <Skeleton variant="rectangular" height={200} />
               <CardContent>
@@ -81,7 +80,6 @@ const ProductListPage = ({ searchQuery, selectedCategory }: Props) => {
 
   return (
     <>
-      {/* 🛒 商品一覧 */}
       <Grid container spacing={2} justifyContent="space-evenly">
         {filteredProducts?.map((product, index) => (
           <motion.div
@@ -90,7 +88,13 @@ const ProductListPage = ({ searchQuery, selectedCategory }: Props) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
           >
-            <Grid item xs={12} sm={4} sx={{ flexGrow: 1, minWidth: 250, maxWidth: 300 }}>
+            <Grid
+              item
+              xs={12}
+              sm={4}
+              component="div" // 🔥 これが絶対必須
+              sx={{ flexGrow: 1, minWidth: 250, maxWidth: 300 }}
+            >
               <Card
                 component={motion.div}
                 whileHover={{ scale: 1.015 }}
@@ -139,7 +143,6 @@ const ProductListPage = ({ searchQuery, selectedCategory }: Props) => {
         ))}
       </Grid>
 
-      {/* ✅ トースト */}
       <Snackbar
         open={openSnackbar}
         autoHideDuration={3000}
