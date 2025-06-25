@@ -60,7 +60,7 @@ const ProductListPage = ({ searchQuery, selectedCategory }: Props) => {
     return (
       <Grid container spacing={2} justifyContent="center">
         {Array.from({ length: 8 }).map((_, i) => (
-          <Grid item key={i} sx={{ minWidth: 250, maxWidth: 300 }}>
+          <Grid component="div" key={i} sx={{ minWidth: 250, maxWidth: 300 }}>
             <Card>
               <Skeleton variant="rectangular" height={200} />
               <CardContent>
@@ -82,7 +82,7 @@ const ProductListPage = ({ searchQuery, selectedCategory }: Props) => {
     <>
       <Grid container spacing={2} justifyContent="space-evenly">
         {filteredProducts?.map((product, index) => (
-          <Grid item xs={12} sm={4} key={product.id} sx={{ flexGrow: 1, minWidth: 250, maxWidth: 300 }}>
+          <Grid component="div" key={product.id} sx={{ flexGrow: 1, minWidth: 250, maxWidth: 300 }}>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
